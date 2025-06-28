@@ -178,11 +178,86 @@
                     progressColor: 'bg-orange-500',
                     icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 25C50 25 58.3333 16.6667 70.8333 16.6667C83.3333 16.6667 91.6667 29.1667 91.6667 41.6667C91.6667 62.5 50 83.3333 50 83.3333C50 83.3333 8.33334 62.5 8.33334 41.6667C8.33334 29.1667 16.6667 16.6667 29.1667 16.6667C41.6667 16.6667 50 25 50 25Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 54.1667C56.9036 54.1667 62.5 48.5702 62.5 41.6667C62.5 34.7631 56.9036 29.1667 50 29.1667C43.0964 29.1667 37.5 34.7631 37.5 41.6667C37.5 48.5702 43.0964 54.1667 50 54.1667Z" stroke="currentColor" stroke-width="5"/></svg>`,
                     skills: [
-                        { id: 'inner-compass', title: 'Inner Compass', progress: 0, description: 'A deeply felt sense of responsibility and commitment to values that serve the good of the whole.', practice: 'Before starting a major task today, pause for 60 seconds. Ask yourself: "How does this task align with what I value most?" Write down one word.', reflection: 'When was the last time you felt truly aligned with your actions, and what were you doing?', coachPrompts: ['How could an AI partner help me track my alignment with my core values this week?', 'What kind of data could I show an AI to get an objective perspective on my Inner Compass?', 'Suggest a symbiotic practice where I use AI to notice when I deviate from my principles.'] },
-                        { id: 'integrity', title: 'Integrity and Authenticity', progress: 0, description: 'The commitment and ability to act with sincerity, honesty, and alignment between values and actions.', practice: 'In your next team meeting, notice if there’s a moment you feel hesitant to speak your mind. Reflect on what holds you back. If appropriate, share your thought constructively.', reflection: 'In what situations do you find it easiest or hardest to be your authentic self?', coachPrompts: ['How can an AI serve as a "digital mirror" to reflect my authenticity back to me?', 'Design an experiment with me where an AI helps me notice gaps between my values and actions.', 'If an AI analyzed my communications for a day, what would it say about my authenticity?'] },
-                        { id: 'openness', title: 'Openness and Learning Mindset', progress: 0, description: 'A fundamental curiosity and willingness to be vulnerable, embrace change, and see challenges as opportunities for growth.', practice: 'When you encounter a problem today, actively seek out a perspective from someone you don\'t usually work with. Listen without interrupting.', reflection: 'Think of a past "failure." What was the most valuable lesson you learned from it?', coachPrompts: ['How can I use an AI to find credible viewpoints that challenge my own?', 'What is a "safe-to-fail" experiment I could run with an AI to practice a learning mindset?', 'Ask an AI to reframe a recent failure of mine as a story of growth.'] },
-                        { id: 'self-awareness', title: 'Self-awareness', progress: 0, description: 'The ability to be in reflective contact with our own thoughts, feelings, and desires.', practice: 'Set a timer for three random times today. When it goes off, pause and label your current emotion (e.g., "anxious," "calm," "focused"). No judgment, just observation.', reflection: 'What physical sensations in your body often signal a particular emotion for you (e.g., tight shoulders for stress)?', coachPrompts: ['How can I use an AI journal to discover emotional patterns I might be missing?', 'If my biometric data were a song, what would an AI say it sounds like right now?', 'Suggest a way an AI can be my "spotter" for unhelpful thought patterns today.'] },
-                        { id: 'presence', title: 'Presence', progress: 0, description: 'The ability to be fully in the here and now, without judgment, in a state of open-ended awareness.', practice: 'During your lunch break, put away your phone. Pay full attention to the taste, texture, and smell of your food for just five minutes.', reflection: 'When during your day do you feel most present? When do you feel most distracted?', coachPrompts: ['How can I use my digital tools symbiotically to create moments of presence, rather than distraction?', 'Suggest a way an AI can help me transition from a high-focus task back to a state of presence.', 'Ask an AI to generate a "Turing test for presence." What would the questions be?'] },
+                        { id: 'inner-compass', title: 'Inner Compass', progress: 0, description: 'A deeply felt sense of responsibility and commitment to values that serve the good of the whole.', 
+                          practices: [
+                            'Before starting a major task today, pause for 60 seconds. Ask yourself: "How does this task align with what I value most?" Write down one word.',
+                            'At the end of your day, list one decision you made. Note whether it felt aligned or misaligned with your inner compass. No judgment, just notice.',
+                            'Identify one of your core values (e.g., kindness, integrity). Plan one small, concrete action you can take tomorrow that expresses this value.',
+                            'When you feel a sense of unease or internal conflict, pause and ask: "Which of my values is being challenged right now?"',
+                            'Write a short "personal mission statement" of no more than two sentences. Read it before you start your work day.'
+                          ],
+                          reflections: [
+                            'When was the last time you felt truly aligned with your actions, and what were you doing?',
+                            'Think of a time you went against your better judgment. What external pressures or internal stories influenced that decision?',
+                            'Who is someone you admire for their strong inner compass? What qualities do they embody?',
+                            'How does your body feel when you are acting in alignment with your values versus when you are not?',
+                            'If your "Inner Compass" could give you one piece of advice for the week ahead, what would it be?'
+                          ],
+                          coachPrompts: ['How could an AI partner help me track my alignment with my core values this week?', 'What kind of data could I show an AI to get an objective perspective on my Inner Compass?', 'Suggest a symbiotic practice where I use AI to notice when I deviate from my principles.'] },
+                        { id: 'integrity', title: 'Integrity and Authenticity', progress: 0, description: 'The commitment and ability to act with sincerity, honesty, and alignment between values and actions.', 
+                          practices: [
+                            'In your next team meeting, notice if there’s a moment you feel hesitant to speak your mind. Afterwards, reflect on what held you back.',
+                            'Choose one interaction today where you will commit to being fully authentic, expressing your thoughts and feelings respectfully.',
+                            'Review your to-do list. Is there anything on it that feels out of integrity with your goals or values? If so, what can you change?',
+                            'Apologize for a small mistake you made recently. Owning our errors is a key part of integrity.',
+                            'Do a "value audit" of your last week. How did you spend your time and energy, and how does that align with what you claim to value?'
+                          ],
+                          reflections: [
+                            'In what situations do you find it easiest or hardest to be your authentic self?',
+                            'What does "authenticity" feel like in your body? What does a lack of integrity feel like?',
+                            'Describe a time when you stood up for your values, even when it was difficult. What was the source of your strength?',
+                            'How does your desire to be liked or to fit in sometimes conflict with your integrity?',
+                            'If your actions over the past month were a story, what would that story say about what you truly value?'
+                          ],
+                          coachPrompts: ['How can an AI serve as a "digital mirror" to reflect my authenticity back to me?', 'Design an experiment with me where an AI helps me notice gaps between my values and actions.', 'If an AI analyzed my communications for a day, what would it say about my authenticity?'] },
+                        { id: 'openness', title: 'Openness and Learning Mindset', progress: 0, description: 'A fundamental curiosity and willingness to be vulnerable, embrace change, and see challenges as opportunities for growth.',
+                          practices: [
+                            'When you encounter a problem today, actively seek out a perspective from someone you don\'t usually work with. Listen without interrupting.',
+                            'Read an article or listen to a podcast that presents a viewpoint you strongly disagree with. Try to understand the author\'s logic without judgment.',
+                            'At the end of the day, ask yourself: "What is one thing I learned today?" It can be big or small.',
+                            'The next time you say "I know," try replacing it with "My current understanding is..." and see how it changes your feeling.',
+                            'Voluntarily try something new that you are not good at. Embrace the feeling of being a beginner.'
+                          ],
+                          reflections: [
+                            'Think of a past "failure." What was the most valuable lesson you learned from it?',
+                            'What topic are you curious about but have never made time to explore? What’s one small step you could take to learn more?',
+                            'When was the last time you changed your mind about something important? What caused the shift?',
+                            'What are you currently "certain" about? What would it take to make you question that certainty?',
+                            'How does your body feel when you are defending a position versus when you are learning openly?'
+                          ],
+                          coachPrompts: ['How can I use an AI to find credible viewpoints that challenge my own?', 'What is a "safe-to-fail" experiment I could run with an AI to practice a learning mindset?', 'Ask an AI to reframe a recent failure of mine as a story of growth.'] },
+                        { id: 'self-awareness', title: 'Self-awareness', progress: 0, description: 'The ability to be in reflective contact with our own thoughts, feelings, and desires.',
+                          practices: [
+                            'Set a timer for three random times today. When it goes off, pause and label your current emotion (e.g., "anxious," "calm," "focused"). No judgment, just observation.',
+                            'Before your next meeting, take 30 seconds to notice your emotional state. How might it affect your participation?',
+                            'When you feel a strong emotion, try to name the physical sensations that go with it. (e.g., "My chest feels tight," "My jaw is clenched").',
+                            'Keep a simple journal for a week, noting one thought or feeling that surprised you each day.',
+                            'Ask a trusted friend or colleague: "What is one of my strengths you see, and one area where you see me getting in my own way?"'
+                          ],
+                          reflections: [
+                            'What physical sensations in your body often signal a particular emotion for you (e.g., tight shoulders for stress)?',
+                            'What is a recurring thought pattern you have? Where did you learn it?',
+                            'Under stress, what is your "go-to" emotional reaction? (e.g., anger, withdrawal, anxiety).',
+                            'What are you pretending not to know about yourself?',
+                            'How does your inner critic speak to you? What would it be like to relate to it with curiosity instead of judgment?'
+                          ],
+                          coachPrompts: ['How can I use an AI journal to discover emotional patterns I might be missing?', 'If my biometric data were a song, what would an AI say it sounds like right now?', 'Suggest a way an AI can be my "spotter" for unhelpful thought patterns today.'] },
+                        { id: 'presence', title: 'Presence', progress: 0, description: 'The ability to be fully in the here and now, without judgment, in a state of open-ended awareness.',
+                          practices: [
+                            'During your lunch break, put away your phone. Pay full attention to the taste, texture, and smell of your food for just five minutes.',
+                            'When walking from one place to another, pay attention to the feeling of your feet on the ground with each step.',
+                            'In your next conversation, practice listening fully to the other person without planning what you will say next.',
+                            'Choose a daily routine (like brushing your teeth) and do it with full, focused attention on the sensory experience.',
+                            'Pause for one minute and just notice the sounds around you. Label them ("car," "birdsong," "humming") without getting lost in stories about them.'
+                          ],
+                          reflections: [
+                            'When during your day do you feel most present? When do you feel most distracted?',
+                            'What are your primary "escape routes" from the present moment? (e.g., social media, planning, worrying).',
+                            'Describe a time you felt completely absorbed in an activity. What was that experience like?',
+                            'How does a lack of presence affect your relationships or the quality of your work?',
+                            'What is one small change you could make to your environment to encourage more presence?'
+                          ],
+                          coachPrompts: ['How can I use my digital tools symbiotically to create moments of presence, rather than distraction?', 'Suggest a way an AI can help me transition from a high-focus task back to a state of presence.', 'Ask an AI to generate a "Turing test for presence." What would the questions be?'] },
                     ]
                 },
                 {
@@ -194,11 +269,86 @@
                     progressColor: 'bg-sky-500',
                     icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M75 41.6667C75 50.3709 70.0829 58.114 62.5 62.5V75H37.5V62.5C29.9171 58.114 25 50.3709 25 41.6667C25 27.4246 36.1726 16.6667 50 16.6667C63.8274 16.6667 75 27.4246 75 41.6667Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 75V83.3333" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M37.5 83.3333H62.5" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 45.8333C52.3012 45.8333 54.1667 43.9678 54.1667 41.6667C54.1667 39.3654 52.3012 37.5 50 37.5C47.6988 37.5 45.8333 39.3654 45.8333 41.6667C45.8333 43.9678 47.6988 45.8333 50 45.8333Z" stroke="currentColor" stroke-width="5"/></svg>`,
                     skills: [
-                        { id: 'critical-thinking', title: 'Critical Thinking', progress: 0, description: 'The ability to critically review the validity of views, evidence, and plans.', practice: 'The next time you read a news article or report, ask: "What is the primary assumption here? What evidence is missing?"', reflection: 'Recall a time you changed your mind about something important. What caused the shift?', coachPrompts: ["How can I use an AI as a 'red team' to find flaws in my reasoning?", "What's a small experiment I could run with an AI partner to test my assumptions?", "Ask an AI to argue for the opposite of what I believe on a topic, using strong evidence."] },
-                        { id: 'complexity-awareness', title: 'Complexity Awareness', progress: 0, description: 'Understanding and skill in working with complex and systemic conditions.', practice: 'Pick a problem at work. Instead of a simple cause-and-effect, try to map at least three interconnected factors that contribute to it.', reflection: 'What is a "simple" problem that turned out to be far more complex than you first thought?', coachPrompts: ["How can an AI help me visualize the hidden feedback loops in a problem I'm facing?", "Use an AI to map the second and third-order consequences of a decision I'm considering.", "Ask an AI to explain a complex system to me as if I were a five-year-old."] },
-                        { id: 'perspective-skills', title: 'Perspective Skills', progress: 0, description: 'The ability to actively seek, understand, and make use of insights from contrasting perspectives.', practice: 'In your next disagreement, genuinely try to argue the other person\'s point of view to yourself. What new insights emerge?', reflection: 'Whose perspective do you find it most challenging to understand, and why?', coachPrompts: ["Ask an AI to write a story about a current event from three radically different characters' points of view.", "How can I use an AI to find the most intelligent people who disagree with me, and understand their perspective?", "Use an AI to synthesize three different perspectives into a new, more integrated view."] },
-                        { id: 'sense-making', title: 'Sense-making', progress: 0, description: 'The skill of seeing patterns, structuring the unknown, and creating coherent narratives from complex information.', practice: 'At the end of your workday, take 5 minutes to connect the dots. Write down the three most important things that happened and how they relate to each other.', reflection: 'How do you typically organize information when you feel overwhelmed by it?', coachPrompts: ["Give an AI a stream of my recent thoughts or journal entries and ask it to find the underlying themes.", "How can an AI help me create a coherent narrative from a confusing set of information?", "Use an AI as a partner to find the 'story behind the story' in a news article."] },
-                        { id: 'long-term-orientation', title: 'Long-term Orientation', progress: 0, description: 'The ability to think beyond immediate pressures and sustain commitment to larger visions.', practice: 'When making a decision today, ask: "What would my future self in 5 years advise me to do right now?"', reflection: 'What is a long-term goal you are working towards, and what is one small step you can take today?', coachPrompts: ["How can I use an AI to simulate the future impact of my daily actions?", "Ask an AI to write a 'future news story' from 2050 about the success of a long-term project I care about.", "Use an AI as a commitment partner to keep me focused on my long-term vision."] },
+                         { id: 'critical-thinking', title: 'Critical Thinking', progress: 0, description: 'The ability to critically review the validity of views, evidence, and plans.',
+                          practices: [
+                            'The next time you read a news article or report, ask: "What is the primary assumption here? What evidence is missing?"',
+                            'Before accepting a task, ask "Why are we doing this?" to understand the underlying purpose and goal.',
+                            'When presented with a strong opinion, ask "How could the opposite be true?" and spend two minutes exploring that possibility.',
+                            'Look at a common belief you hold. What is the strongest evidence *against* it?',
+                            'Practice distinguishing observations (what you saw/heard) from interpretations (the story you made up about it).'
+                          ],
+                          reflections: [
+                            'Recall a time you changed your mind about something important. What caused the shift?',
+                            'What types of information or sources do you tend to trust implicitly? Why?',
+                            'How do your emotions influence your ability to think critically about a topic?',
+                            'Think about a recent decision. What assumptions did you make that you didn\'t question at the time?',
+                            'What is the difference between being critical and being cynical?'
+                          ],
+                          coachPrompts: ["How can I use an AI as a 'red team' to find flaws in my reasoning?", "What's a small experiment I could run with an AI partner to test my assumptions?", "Ask an AI to argue for the opposite of what I believe on a topic, using strong evidence."] },
+                        { id: 'complexity-awareness', title: 'Complexity Awareness', progress: 0, description: 'Understanding and skill in working with complex and systemic conditions.',
+                          practices: [
+                            'Pick a problem at work. Instead of a simple cause-and-effect, try to map at least three interconnected factors that contribute to it.',
+                            'When discussing a solution, ask "And what might be the unintended consequences of that?"',
+                            'Look at a recent success. What were the hidden factors or fortunate coincidences that contributed to it?',
+                            'Choose a global issue (e.g., climate change). Spend 10 minutes tracing one connection between your daily life and that issue.',
+                            'Identify a feedback loop in your team or organization (e.g., success leads to more resources, which leads to more success).'
+                          ],
+                          reflections: [
+                            'What is a "simple" problem that turned out to be far more complex than you first thought?',
+                            'How do you feel when you can\'t find a clear, simple answer to a problem?',
+                            'Think about a system you are part of (your family, your team, your community). What are some of its unwritten rules?',
+                            'Where do you tend to oversimplify things to feel more in control?',
+                            'What is the difference between a complicated system (like a watch) and a complex system (like a pond)?'
+                          ],
+                          coachPrompts: ["How can an AI help me visualize the hidden feedback loops in a problem I'm facing?", "Use an AI to map the second and third-order consequences of a decision I'm considering.", "Ask an AI to explain a complex system to me as if I were a five-year-old."] },
+                        { id: 'perspective-skills', title: 'Perspective Skills', progress: 0, description: 'The ability to actively seek, understand, and make use of insights from contrasting perspectives.',
+                          practices: [
+                            'In your next disagreement, genuinely try to argue the other person\'s point of view to yourself. What new insights emerge?',
+                            'Watch a film or read a book from a culture or background very different from your own.',
+                            'When making a decision, explicitly ask: "Who is not in this room, and what would their perspective be?"',
+                            'Spend a day imagining you are seeing your workplace through the eyes of a brand new employee. What do you notice?',
+                            'Find someone you disagree with on a social issue and listen to their perspective for 10 minutes with the sole goal of understanding, not refuting.'
+                          ],
+                          reflections: [
+                            'Whose perspective do you find it most challenging to understand, and why?',
+                            'What part of your own identity (e.g., profession, nationality, gender) most strongly shapes your perspective?',
+                            'Think of a time your perspective was fundamentally changed by an experience. What happened?',
+                            'How can you tell when you are truly taking another\'s perspective, versus just projecting your own ideas onto them?',
+                            'What are the limits of perspective-taking? When is it not enough?'
+                          ],
+                          coachPrompts: ["Ask an AI to write a story about a current event from three radically different characters' points of view.", "How can I use an AI to find the most intelligent people who disagree with me, and understand their perspective?", "Use an AI to synthesize three different perspectives into a new, more integrated view."] },
+                        { id: 'sense-making', title: 'Sense-making', progress: 0, description: 'The skill of seeing patterns, structuring the unknown, and creating coherent narratives from complex information.',
+                          practices: [
+                            'At the end of your workday, take 5 minutes to connect the dots. Write down the three most important things that happened and how they relate to each other.',
+                            'When faced with a flood of information, ask: "What is the core message here? What is the signal in the noise?"',
+                            'Use a metaphor to explain a complex situation to a friend. (e.g., "This project is like trying to build a plane while it\'s flying").',
+                            'When you feel confused, try to draw the situation. Use boxes, arrows, and circles to map the relationships between the parts.',
+                            'After a meeting, try to summarize the key takeaway in a single, clear sentence.'
+                          ],
+                          reflections: [
+                            'How do you typically organize information when you feel overwhelmed by it?',
+                            'Think about a time you had an "aha!" moment where everything suddenly clicked. What conditions led to that insight?',
+                            'What are the dominant narratives or stories that shape your understanding of your work or your life?',
+                            'How does your emotional state affect your ability to make sense of a situation?',
+                            'When is a coherent story helpful, and when might it be a dangerous oversimplification?'
+                          ],
+                          coachPrompts: ["Give an AI a stream of my recent thoughts or journal entries and ask it to find the underlying themes.", "How can an AI help me create a coherent narrative from a confusing set of information?", "Use an AI as a partner to find the 'story behind the story' in a news article."] },
+                        { id: 'long-term-orientation', title: 'Long-term Orientation', progress: 0, description: 'The ability to think beyond immediate pressures and sustain commitment to larger visions.',
+                          practices: [
+                            'When making a decision today, ask: "What would my future self in 5 years advise me to do right now?"',
+                            'Plant a seed or a small tree. Tending to it is a physical practice of long-term care.',
+                            'Identify one urgent but unimportant task you do regularly. For one week, consciously choose to spend that time on a long-term, important goal instead.',
+                            'Write a letter to yourself to be opened in one year. What do you hope to have learned or accomplished?',
+                            'Before starting your day, identify your single most important task (the one that serves your long-term vision) and do it first.'
+                          ],
+                          reflections: [
+                            'What is a long-term goal you are working towards, and what is one small step you can take today?',
+                            'What immediate gratification do you often prioritize over your long-term well-being?',
+                            'Think of yourself as an ancestor. What legacy do you want to leave for future generations (in your family, community, or the world)?',
+                            'How does short-term thinking benefit you? What are its costs?',
+                            'What systems or structures in your environment encourage short-term thinking over long-term vision?'
+                          ],
+                          coachPrompts: ["How can I use an AI to simulate the future impact of my daily actions?", "Ask an AI to write a 'future news story' from 2050 about the success of a long-term project I care about.", "Use an AI as a commitment partner to keep me focused on my long-term vision."] },
                     ]
                 },
                 {
@@ -210,10 +360,70 @@
                     progressColor: 'bg-teal-500',
                     icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 62.5C62.5939 62.5 72.9167 52.1772 72.9167 39.5833C72.9167 27 62.5939 16.6667 50 16.6667C37.4061 16.6667 27.0833 27 27.0833 39.5833C27.0833 45.4167 29.8958 50.5208 34.375 54.1667" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 83.3333C25 72.2878 36.1929 62.5 50 62.5C57.4477 62.5 64.1283 66.2519 68.75 71.875" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M75 83.3333C75 74.5292 68.9749 67.2917 61.4583 64.5833" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
                     skills: [
-                        { id: 'appreciation', title: 'Appreciation', progress: 0, description: 'The ability to relate to others and the world with a basic sense of gratitude and recognition of value.', practice: 'At the end of the day, write down one thing a colleague did that you appreciated. If you feel comfortable, share it with them tomorrow.', reflection: 'What is something simple you often take for granted?', coachPrompts: ['How can an AI help me notice small things to be grateful for that I usually overlook?', 'Ask an AI to write a short poem about an ordinary object I appreciate.', 'Use an AI to find and share a story of appreciation from a culture different from my own.'] },
-                        { id: 'connectedness', title: 'Connectedness', progress: 0, description: 'A keen sense of being part of a larger whole, whether a community, humanity, or the global ecosystem.', practice: 'Look at an everyday object on your desk. Take a moment to think about the hundreds of people involved in its creation and journey to you.', reflection: 'When have you felt most connected to a group or a cause?', coachPrompts: ["Use an AI to trace the global supply chain of a simple object on my desk, highlighting the web of people involved.", "Ask an AI to create a visualization of my connection to the natural world based on my daily activities.", "How could an AI help a group of people feel a stronger sense of shared identity?"] },
-                        { id: 'humility', title: 'Humility', progress: 0, description: 'The capacity to act in accordance with the needs of a situation without being driven by ego.', practice: 'In your next conversation, focus on listening more than you speak. Ask questions to understand, not to respond.', reflection: 'When is it difficult for you to admit you don\'t know something?', coachPrompts: ["Ask an AI to explain something I think I know well, and identify three things I didn't know.", "How can I use an AI partner to practice listening without formulating a response?", "Use an AI to find examples of great leaders demonstrating humility."] },
-                        { id: 'empathy', title: 'Empathy and Compassion', progress: 0, description: 'The ability to understand and feel into the experience of others, coupled with the motivation to help.', practice: 'When a colleague seems stressed, instead of offering a solution, try saying: "It sounds like this is really challenging. How are you doing with it?"', reflection: 'Think about a time someone showed you empathy. What did they do or say that made a difference?', coachPrompts: ["How can I use an AI to practice responding with compassion in a simulated difficult conversation?", "Ask an AI to re-write a critical email I received from a more compassionate perspective.", "Use an AI to find stories that deepen my empathy for a group of people I don't understand."] },
+                        { id: 'appreciation', title: 'Appreciation', progress: 0, description: 'The ability to relate to others and the world with a basic sense of gratitude and recognition of value.',
+                          practices: [
+                            'At the end of the day, write down one thing a colleague did that you appreciated. If you feel comfortable, share it with them tomorrow.',
+                            'Start your next team meeting by having everyone share one thing they appreciate about the team or the work.',
+                            'Take an "appreciation walk." For 10 minutes, notice and mentally name all the small things you see that you are grateful for.',
+                            'Write a thank-you note to someone who made a difference in your life, even if you never send it.',
+                            'When you enjoy a meal, take a moment to appreciate the chain of people (farmers, drivers, cooks) who made it possible.'
+                          ],
+                          reflections: [
+                            'What is something simple you often take for granted?',
+                            'How does expressing appreciation change your relationship with someone?',
+                            'What gets in the way of you feeling or expressing appreciation more often?',
+                            'Think about a difficult person in your life. What is one small thing you can genuinely appreciate about them?',
+                            'What is the difference between appreciation and flattery?'
+                          ],
+                          coachPrompts: ['How can an AI help me notice small things to be grateful for that I usually overlook?', 'Ask an AI to write a short poem about an ordinary object I appreciate.', 'Use an AI to find and share a story of appreciation from a culture different from my own.'] },
+                        { id: 'connectedness', title: 'Connectedness', progress: 0, description: 'A keen sense of being part of a larger whole, whether a community, humanity, or the global ecosystem.',
+                          practices: [
+                            'Look at an everyday object on your desk. Take a moment to think about the hundreds of people involved in its creation and journey to you.',
+                            'Go outside and find one living thing (a plant, an insect). Observe it for two minutes and consider the ecosystem it belongs to.',
+                            'Read about the history of the town or land where you live. How does this connect you to its past?',
+                            'Perform a small, anonymous act of kindness for your community (e.g., pick up a piece of trash).',
+                            'Think about the water you drink. Trace its journey from a cloud, to a river, to your tap, and back into the world.'
+                          ],
+                          reflections: [
+                            'When have you felt most connected to a group or a cause?',
+                            'What does it mean to you to be a "citizen of the world"?',
+                            'How does your sense of connection (or lack thereof) influence your daily choices?',
+                            'Think of a time you felt disconnected or lonely. What was that experience like?',
+                            'What is one way you are connected to future generations?'
+                          ],
+                          coachPrompts: ["Use an AI to trace the global supply chain of a simple object on my desk, highlighting the web of people involved.", "Ask an AI to create a visualization of my connection to the natural world based on my daily activities.", "How could an AI help a group of people feel a stronger sense of shared identity?"] },
+                        { id: 'humility', title: 'Humility', progress: 0, description: 'The capacity to act in accordance with the needs of a situation without being driven by ego.',
+                          practices: [
+                            'In your next conversation, focus on listening more than you speak. Ask questions to understand, not to respond.',
+                            'Actively ask for help on a task, even if you think you can do it yourself.',
+                            'Give credit for a success to the whole team, even if you played a major role.',
+                            'When you receive feedback, your first response should be "Thank you," even if you disagree. You can process it later.',
+                            'Spend some time in nature and contemplate your place in the vastness of the universe.'
+                          ],
+                          reflections: [
+                            'When is it difficult for you to admit you don\'t know something?',
+                            'What is the difference between humility and having low self-esteem?',
+                            'Who is a role model of humility for you? What do they do that demonstrates this quality?',
+                            'How does your ego show up in your daily life? (e.g., needing to be right, wanting credit).',
+                            'When has your humility (or lack thereof) helped or hindered a situation?'
+                          ],
+                          coachPrompts: ["Ask an AI to explain something I think I know well, and identify three things I didn't know.", "How can I use an AI partner to practice listening without formulating a response?", "Use an AI to find examples of great leaders demonstrating humility."] },
+                        { id: 'empathy', title: 'Empathy and Compassion', progress: 0, description: 'The ability to understand and feel into the experience of others, coupled with the motivation to help.',
+                          practices: [
+                            'When a colleague seems stressed, instead of offering a solution, try saying: "It sounds like this is really challenging. How are you doing with it?"',
+                            'Before sending a critical email, re-read it from the recipient\'s perspective. How might they feel? Adjust your tone if needed.',
+                            'When you feel judgmental of someone, try to imagine the experiences that might have led them to their current behavior.',
+                            'Practice self-compassion. When you make a mistake, speak to yourself as you would a dear friend.',
+                            'Read a first-person account from someone with a life experience very different from your own.'
+                          ],
+                          reflections: [
+                            'Think about a time someone showed you empathy. What did they do or say that made a difference?',
+                            'What is the difference between empathy (feeling with) and sympathy (feeling for)?',
+                            'What makes it hard for you to feel empathy for certain people or groups?',
+                            'How do you show compassion for yourself when you are struggling?',
+                            'When is offering advice a form of compassion, and when does it get in the way?'
+                          ],
+                          coachPrompts: ["How can I use an AI to practice responding with compassion in a simulated difficult conversation?", "Ask an AI to re-write a critical email I received from a more compassionate perspective.", "Use an AI to find stories that deepen my empathy for a group of people I don't understand."] },
                     ]
                 },
                 {
@@ -225,11 +435,86 @@
                     progressColor: 'bg-pink-500',
                     icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.3333 58.3333C40.9137 58.3333 46.9444 52.3026 46.9444 44.7222C46.9444 37.1418 40.9137 31.1111 33.3333 31.1111C25.7529 31.1111 19.7222 37.1418 19.7222 44.7222C19.7222 52.3026 25.7529 58.3333 33.3333 58.3333Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.6667 80.2778V76.1111C16.6667 66.2731 24.162 58.3333 33.3333 58.3333" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M66.6667 58.3333C74.2471 58.3333 80.2778 52.3026 80.2778 44.7222C80.2778 37.1418 74.2471 31.1111 66.6667 31.1111C59.0863 31.1111 53.0556 37.1418 53.0556 44.7222C53.0556 52.3026 59.0863 58.3333 66.6667 58.3333Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M83.3333 80.2778V76.1111C83.3333 66.2731 75.838 58.3333 66.6667 58.3333C61.4729 58.3333 56.8407 60.7712 53.8889 64.4444" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M33.3333 58.3333C38.5271 58.3333 43.1593 60.7712 46.1111 64.4444" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
                     skills: [
-                        { id: 'communication-skills', title: 'Communication Skills', progress: 0, description: 'The ability to listen deeply, foster genuine dialogue, and manage conflict constructively.', practice: 'In your next conversation, after the other person finishes speaking, pause for a count of three before you respond. Use that time to fully absorb what they said.', reflection: 'What communication habit do you have that you\'d like to improve?', coachPrompts: ['How can an AI analyze a transcript of a conversation and give me feedback on my listening skills?', 'Ask an AI to rephrase a difficult message I need to send in a way that fosters dialogue.', 'Use an AI to simulate a conversation where I practice staying calm and constructive under pressure.'] },
-                        { id: 'co-creation-skills', title: 'Co-creation Skills', progress: 0, description: 'Skills to build and facilitate collaborative relationships characterized by psychological safety.', practice: 'Start your next project meeting by asking: "What does a great outcome look like for each of us?" and build from the shared understanding.', reflection: 'Think of your best-ever collaboration. What made it so effective?', coachPrompts: ['How can my team use an AI as a neutral facilitator in a brainstorming session?', 'Ask an AI to suggest three ways to increase psychological safety in my next meeting.', 'Use an AI to synthesize ideas from my team into a novel, co-created proposal.'] },
-                        { id: 'inclusive-mindset', title: 'Inclusive Mindset', progress: 0, description: 'The willingness and competence to embrace diversity and include people with different backgrounds.', practice: 'During a team discussion, consciously look for the person who has spoken the least and invite their opinion: "Sarah, we haven\'t heard from you yet, what are your thoughts?"', reflection: 'Whose voices or perspectives might be missing from your team\'s decision-making process?', coachPrompts: ['How can an AI help me identify and challenge unconscious biases in my language?', 'Ask an AI to check a document I wrote for language that might not be inclusive.', 'Use an AI to find and learn about the communication styles of a culture I want to understand better.'] },
-                        { id: 'trust', title: 'Trust', progress: 0, description: 'The ability to both show trust and to create and maintain trusting relationships.', practice: 'Delegate a task to a colleague and give them full autonomy on the "how". Focus on the "what" (the outcome), not micromanaging the process.', reflection: 'What actions build your trust in others? What actions erode it?', coachPrompts: ["What small actions could I take this week, assisted by an AI reminder, to build trust with my team?", "Ask an AI to analyze the characteristics of high-trust teams and give me three practical tips.", "How can I use an AI to help me delegate more effectively and show trust in my colleagues?"] },
-                        { id: 'mobilization-skills', title: 'Mobilization Skills', progress: 0, description: 'The ability to inspire and engage others to work toward a shared purpose.', practice: 'Connect a colleague\'s daily task to the team\'s larger mission. For example, "The care you\'re putting into this report is crucial for our client\'s success."', reflection: 'Who is someone that inspires you to act, and what is it about them that is so motivating?', coachPrompts: ["How can I use an AI to craft a more compelling story about a vision I have?", "Ask an AI to analyze a successful social movement and identify key mobilization strategies.", "Use an AI to help me connect the daily tasks of my team to a larger, shared purpose."] },
+                        { id: 'communication-skills', title: 'Communication Skills', progress: 0, description: 'The ability to listen deeply, foster genuine dialogue, and manage conflict constructively.',
+                          practices: [
+                            'In your next conversation, after the other person finishes speaking, pause for a count of three before you respond. Use that time to fully absorb what they said.',
+                            'Practice "looping": After someone speaks, say "So if I understand correctly, you\'re saying..." and summarize their point until they confirm you got it right.',
+                            'Try using "I" statements instead of "you" statements to express a difficult feeling. (e.g., "I feel concerned when..." instead of "You are making me concerned when...").',
+                            'When you disagree, find one part of the other person\'s statement that you *can* agree with, and start there.',
+                            'Ask open-ended questions that start with "What" or "How" instead of closed questions that can be answered with "yes" or "no".'
+                          ],
+                          reflections: [
+                            'What communication habit do you have that you\'d like to improve?',
+                            'Think of a recent misunderstanding. What role did your communication style play in it?',
+                            'Who do you consider an excellent communicator? What do they do that makes them effective?',
+                            'Under pressure, does your communication style change? How?',
+                            'What is the difference between debating to win and having a dialogue to understand?'
+                          ],
+                          coachPrompts: ['How can an AI analyze a transcript of a conversation and give me feedback on my listening skills?', 'Ask an AI to rephrase a difficult message I need to send in a way that fosters dialogue.', 'Use an AI to simulate a conversation where I practice staying calm and constructive under pressure.'] },
+                        { id: 'co-creation-skills', title: 'Co-creation Skills', progress: 0, description: 'Skills to build and facilitate collaborative relationships characterized by psychological safety.',
+                          practices: [
+                            'Start your next project meeting by asking: "What does a great outcome look like for each of us?" and build from the shared understanding.',
+                            'In a brainstorming session, use the "Yes, and..." principle. Instead of criticizing an idea, build upon it.',
+                            'Explicitly invite the quietest person in the room to share their thoughts.',
+                            'When a team member makes a mistake, focus the conversation on learning and solutions, not blame.',
+                            'Co-create the agenda for your next team meeting with your colleagues instead of setting it yourself.'
+                          ],
+                          reflections: [
+                            'Think of your best-ever collaboration. What made it so effective?',
+                            'What conditions make you feel safe enough to share a half-formed or "crazy" idea with a group?',
+                            'How can you tell if a team has high psychological safety?',
+                            'What is your typical role in a group? (e.g., idea generator, question-asker, planner, harmonizer).',
+                            'When does a desire for consensus get in the way of true co-creation?'
+                          ],
+                          coachPrompts: ['How can my team use an AI as a neutral facilitator in a brainstorming session?', 'Ask an AI to suggest three ways to increase psychological safety in my next meeting.', 'Use an AI to synthesize ideas from my team into a novel, co-created proposal.'] },
+                        { id: 'inclusive-mindset', title: 'Inclusive Mindset', progress: 0, description: 'The willingness and competence to embrace diversity and include people with different backgrounds.',
+                          practices: [
+                            'During a team discussion, consciously look for the person who has spoken the least and invite their opinion: "Sarah, we haven\'t heard from you yet, what are your thoughts?"',
+                            'Review a recent document or email you wrote. Is the language inclusive? (e.g., using "they" instead of "he/she" for a generic person).',
+                            'Learn how to pronounce a colleague\'s name correctly, and use it.',
+                            'If you are in a position of privilege, use your voice to amplify an idea from someone in a less-privileged position.',
+                            'When scheduling a meeting, be mindful of different time zones, family responsibilities, or religious holidays.'
+                          ],
+                          reflections: [
+                            'Whose voices or perspectives might be missing from your team\'s decision-making process?',
+                            'Think about the "unwritten rules" of your workplace or social group. Who might feel excluded by them?',
+                            'What is one assumption you\'ve held about a group of people that turned out to be wrong?',
+                            'What is the difference between "equality" (everyone gets the same thing) and "equity" (everyone gets what they need to succeed)?',
+                            'How can you move from "not being biased" to being actively "anti-biased"?'
+                          ],
+                          coachPrompts: ['How can an AI help me identify and challenge unconscious biases in my language?', 'Ask an AI to check a document I wrote for language that might not be inclusive.', 'Use an AI to find and learn about the communication styles of a culture I want to understand better.'] },
+                        { id: 'trust', title: 'Trust', progress: 0, description: 'The ability to both show trust and to create and maintain trusting relationships.',
+                          practices: [
+                            'Delegate a task to a colleague and give them full autonomy on the "how". Focus on the "what" (the outcome), not micromanaging the process.',
+                            'Share a small, appropriate vulnerability with your team to show you are human and build connection.',
+                            'When you promise to do something, write it down and make sure you follow through. Reliability is a cornerstone of trust.',
+                            'Assume positive intent. When a colleague\'s action is ambiguous, assume they meant well until proven otherwise.',
+                            'Listen to understand, not to respond. This shows you trust and value their perspective.'
+                          ],
+                          reflections: [
+                            'What actions from others build your trust in them? What actions erode it?',
+                            'Think about a time you broke someone\'s trust. What could you have done differently?',
+                            'In what situations do you find it hard to trust others? What fear is underlying that lack of trust?',
+                            'What is the relationship between trust and control?',
+                            'How do you build trust in a remote or virtual team environment?'
+                          ],
+                          coachPrompts: ["What small actions could I take this week, assisted by an AI reminder, to build trust with my team?", "Ask an AI to analyze the characteristics of high-trust teams and give me three practical tips.", "How can I use an AI to help me delegate more effectively and show trust in my colleagues?"] },
+                        { id: 'mobilization-skills', title: 'Mobilization Skills', progress: 0, description: 'The ability to inspire and engage others to work toward a shared purpose.',
+                          practices: [
+                            'Connect a colleague\'s daily task to the team\'s larger mission. For example, "The care you\'re putting into this report is crucial for our client\'s success."',
+                            'Share a story, not just data, to communicate the importance of a project.',
+                            'Publicly celebrate a small win to build momentum and positive energy.',
+                            'Create a clear and compelling vision for a project. What will the world look like if you succeed?',
+                            'Ask your team: "What is one thing that, if we did it, would make everything else easier or unnecessary?"'
+                          ],
+                          reflections: [
+                            'Who is someone that inspires you to act, and what is it about them that is so motivating?',
+                            'Think about a time you felt truly engaged and mobilized. What were the conditions that made that possible?',
+                            'What is the difference between mobilizing and manipulating?',
+                            'How do you create a sense of shared purpose in a diverse group?',
+                            'What is your personal theory of how change happens?'
+                          ],
+                          coachPrompts: ["How can I use an AI to craft a more compelling story about a vision I have?", "Ask an AI to analyze a successful social movement and identify key mobilization strategies.", "Use an AI to help me connect the daily tasks of my team to a larger, shared purpose."] },
                     ]
                 },
                 {
@@ -241,10 +526,70 @@
                     progressColor: 'bg-yellow-500',
                     icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M41.6667 16.6667L62.5 50L41.6667 83.3333" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 83.3333H75" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
                     skills: [
-                        { id: 'courage', title: 'Courage', progress: 0, description: 'The ability to stand up for values, make decisions, and challenge existing structures when necessary.', practice: 'Identify one small, necessary but uncomfortable action you have been avoiding. Dedicate 15 minutes today to starting it.', reflection: 'When was a time you acted with courage, even if you were afraid? What was the outcome?', coachPrompts: ["How can an AI help me break down a courageous action into smaller, less intimidating steps?", "Ask an AI to tell me a story about someone who showed courage in a similar situation I'm facing.", "Use an AI to 'wargame' a difficult conversation to build my confidence."] },
-                        { id: 'creativity', title: 'Creativity', progress: 0, description: 'The ability to generate and develop original ideas, innovate, and disrupt conventional patterns.', practice: 'Take a routine task you do every day. Ask yourself: "What if I did this in a completely different way?" Brainstorm three absurd ideas.', reflection: 'Where do you get your best ideas?', coachPrompts: ["Use an AI to combine two unrelated concepts and generate a novel idea.", "How can I use an AI as a 'creative muse' to break out of my usual thinking patterns?", "Ask an AI to imagine the 'next evolution' of a product or service I work with."] },
-                        { id: 'optimism', title: 'Optimism', progress: 0, description: 'The capacity to sustain and communicate a sense of hope and confidence in the possibility of meaningful change.', practice: 'When faced with a setback today, consciously identify one opportunity or lesson within the challenge.', reflection: 'Who in your life is a source of optimism for you, and why?', coachPrompts: ["How can I use an AI to find stories of progress and hope related to a challenge I care about?", "Ask an AI to reframe a pessimistic thought I have into an optimistic, but realistic, one.", "Use an AI to help me craft a message of hope that is both inspiring and credible."] },
-                        { id: 'perseverance', title: 'Perseverance', progress: 0, description: 'The ability to sustain engagement and remain determined and patient, even when efforts take a long time to bear fruit.', practice: 'Acknowledge a long-term goal you\'re working on. Today, simply do the "next small thing" on that path, no matter how small.', reflection: 'What keeps you going when you feel like giving up on a difficult project?', coachPrompts: ["How can I use an AI as a 'patience coach' to help me stay with a long-term project?", "Ask an AI to create a visual representation of my progress to keep me motivated.", "Use an AI to find stories of people who showed incredible perseverance against the odds."] },
+                        { id: 'courage', title: 'Courage', progress: 0, description: 'The ability to stand up for values, make decisions, and challenge existing structures when necessary.',
+                          practices: [
+                            'Identify one small, necessary but uncomfortable action you have been avoiding. Dedicate 15 minutes today to starting it.',
+                            'In your next meeting, ask a question that you think might be "dumb." Often, others are wondering the same thing.',
+                            'Speak up to challenge a negative stereotype or an unhelpful assumption, even in a casual conversation.',
+                            'Say "no" to a request that is not in alignment with your priorities.',
+                            'Share an unpopular opinion respectfully, backing it up with your reasoning.'
+                          ],
+                          reflections: [
+                            'When was a time you acted with courage, even if you were afraid? What was the outcome?',
+                            'What is the relationship between courage and fear?',
+                            'What is one area of your life where you are "playing it safe"? What would a small act of courage look like there?',
+                            'Distinguish between courage and recklessness. What\'s the difference?',
+                            'Who are your role models for courage? What have you learned from them?'
+                          ],
+                          coachPrompts: ["How can an AI help me break down a courageous action into smaller, less intimidating steps?", "Ask an AI to tell me a story about someone who showed courage in a similar situation I'm facing.", "Use an AI to 'wargame' a difficult conversation to build my confidence."] },
+                        { id: 'creativity', title: 'Creativity', progress: 0, description: 'The ability to generate and develop original ideas, innovate, and disrupt conventional patterns.',
+                          practices: [
+                            'Take a routine task you do every day. Ask yourself: "What if I did this in a completely different way?" Brainstorm three absurd ideas.',
+                            'Combine two unrelated objects on your desk and imagine a new product or service from them.',
+                            'Spend 10 minutes "doodling" about a problem instead of writing about it.',
+                            'Impose a new constraint on a task. For example, "How would I do this with half the budget?" or "How would I explain this using only pictures?"',
+                            'Take a different route on your commute or walk. Notice what new things you see.'
+                          ],
+                          reflections: [
+                            'Where do you get your best ideas?',
+                            'What activities or environments tend to kill your creativity? Which ones nurture it?',
+                            'What was your relationship with creativity as a child? How has it changed?',
+                            'What is the fear that holds you back from being more creative?',
+                            'Think about an innovative product or idea you admire. What conventional pattern did it disrupt?'
+                          ],
+                          coachPrompts: ["Use an AI to combine two unrelated concepts and generate a novel idea.", "How can I use an AI as a 'creative muse' to break out of my usual thinking patterns?", "Ask an AI to imagine the 'next evolution' of a product or service I work with."] },
+                        { id: 'optimism', title: 'Optimism', progress: 0, description: 'The capacity to sustain and communicate a sense of hope and confidence in the possibility of meaningful change.',
+                          practices: [
+                            'When faced with a setback today, consciously identify one opportunity or lesson within the challenge.',
+                            'Keep a "win" jar. Every day, write down one small success or thing that went well and add it to the jar.',
+                            'For one day, practice "positive gossip." When you talk about someone who isn\'t present, only say positive things.',
+                            'When you feel pessimistic, challenge your thoughts. Ask: "Is this 100% true? What is a more empowering perspective?"',
+                            'Find and share a story of positive change or progress with a friend or colleague.'
+                          ],
+                          reflections: [
+                            'Who in your life is a source of optimism for you, and why?',
+                            'What is the difference between realistic optimism and naive wishful thinking?',
+                            'How does your level of optimism affect your energy and motivation?',
+                            'Think of a time you were pessimistic and were proven wrong. What happened?',
+                            'What are your "triggers" for pessimism? How can you prepare for them?'
+                          ],
+                          coachPrompts: ["How can I use an AI to find stories of progress and hope related to a challenge I care about?", "Ask an AI to reframe a pessimistic thought I have into an optimistic, but realistic, one.", "Use an AI to help me craft a message of hope that is both inspiring and credible."] },
+                        { id: 'perseverance', title: 'Perseverance', progress: 0, description: 'The ability to sustain engagement and remain determined and patient, even when efforts take a long time to bear fruit.',
+                          practices: [
+                            'Acknowledge a long-term goal you\'re working on. Today, simply do the "next small thing" on that path, no matter how small.',
+                            'When you feel like giving up on a task, set a timer for just five more minutes. You can do anything for five minutes.',
+                            'Break down a daunting task into tiny, manageable steps. Focus only on completing the first step.',
+                            'Create a "progress wall" where you visually track your progress on a long-term project.',
+                            'When you complete a difficult task, take a moment to consciously acknowledge your effort and celebrate the milestone.'
+                          ],
+                          reflections: [
+                            'What keeps you going when you feel like giving up on a difficult project?',
+                            'Think about a time you persevered and succeeded. What inner resources did you draw on?',
+                            'What is the difference between perseverance and stubbornly sticking to a failing plan?',
+                            'How do you recharge your motivation when it runs low?',
+                            'What story do you tell yourself when you encounter an obstacle?'
+                          ],
+                          coachPrompts: ["How can I use an AI as a 'patience coach' to help me stay with a long-term project?", "Ask an AI to create a visual representation of my progress to keep me motivated.", "Use an AI to find stories of people who showed incredible perseverance against the odds."] },
                     ]
                 }
             ]
@@ -427,6 +772,9 @@
             const dimension = idgData.dimensions.find(d => d.id === dimensionId);
             const skill = dimension.skills.find(s => s.id === skillId);
             
+            let currentPracticeIndex = 0;
+            let currentReflectionIndex = 0;
+
             const backToSkillsBtn = document.getElementById('back-to-skills-btn');
             backToSkillsBtn.onclick = () => showDimensionDetail(dimensionId);
             backToSkillsBtn.className = `font-semibold flex items-center transition-opacity hover:opacity-80 ${dimension.textColor}`;
@@ -441,12 +789,18 @@
                 
                 <div class="space-y-6">
                     <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
-                        <h5 class="font-bold text-stone-700 mb-2">🌱 Micro-Practice</h5>
-                        <p class="text-stone-600">${skill.practice}</p>
+                        <div class="flex justify-between items-center mb-2">
+                           <h5 class="font-bold text-stone-700">🌱 Micro-Practice</h5>
+                           <button id="next-practice-btn" class="text-xs font-semibold ${dimension.textColor} hover:opacity-80">NEXT &rarr;</button>
+                        </div>
+                        <p id="practice-text" class="text-stone-600"></p>
                     </div>
                     <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
-                        <h5 class="font-bold text-stone-700 mb-2">🤔 Reflective Question</h5>
-                        <p class="text-stone-600">${skill.reflection}</p>
+                        <div class="flex justify-between items-center mb-2">
+                            <h5 class="font-bold text-stone-700">🤔 Reflective Question</h5>
+                            <button id="next-reflection-btn" class="text-xs font-semibold ${dimension.textColor} hover:opacity-80">NEXT &rarr;</button>
+                        </div>
+                        <p id="reflection-text" class="text-stone-600"></p>
                     </div>
                     <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
                         <h5 class="font-bold text-stone-700 mb-3">🤖 AI Coach</h5>
@@ -475,6 +829,25 @@
                 </div>
             `;
             
+            const practiceText = document.getElementById('practice-text');
+            const reflectionText = document.getElementById('reflection-text');
+            const nextPracticeBtn = document.getElementById('next-practice-btn');
+            const nextReflectionBtn = document.getElementById('next-reflection-btn');
+
+            practiceText.textContent = skill.practices[currentPracticeIndex];
+            reflectionText.textContent = skill.reflections[currentReflectionIndex];
+
+            nextPracticeBtn.onclick = () => {
+                currentPracticeIndex = (currentPracticeIndex + 1) % skill.practices.length;
+                practiceText.textContent = skill.practices[currentPracticeIndex];
+            };
+            
+            nextReflectionBtn.onclick = () => {
+                currentReflectionIndex = (currentReflectionIndex + 1) % skill.reflections.length;
+                reflectionText.textContent = skill.reflections[currentReflectionIndex];
+            };
+
+
             const coachInput = document.getElementById('coach-input');
             const shuffleBtn = document.getElementById('shuffle-prompt-btn');
             const sendBtn = document.getElementById('send-prompt-btn');
