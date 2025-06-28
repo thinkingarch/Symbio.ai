@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbiotic - Your Inner Development Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for a sleeker look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a29e; /* stone-400 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716c; /* stone-500 */
+        }
+        /* Style for the view transitions */
+        .view {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .view.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Styling for icons and progress bars */
+        .dimension-icon-large svg {
+            width: 50%;
+            height: 50%;
+            transition: transform 0.3s ease;
+        }
+        .journey-card:hover .dimension-icon-large svg {
+            transform: scale(1.1);
+        }
+        .progress-bar-fill {
+            transition: width 0.5s ease-in-out;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #a8a29e;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800 antialiased">
+
+    <!-- Main Container -->
+    <div id="app" class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <!-- App Header -->
+        <header class="text-center mb-8 md:mb-12 relative">
+            <h1 class="text-4xl md:text-5xl font-bold text-amber-900">Symbiotic</h1>
+            <p class="text-stone-500 mt-2 text-lg">Your AI-augmented journey for Inner Development</p>
+             <!-- Admin Page Button -->
+            <button onclick="showView('admin-view')" class="absolute top-0 right-0 p-2 text-stone-500 hover:text-stone-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </button>
+            <!-- Overall Journey Progress Bar -->
+            <div id="journey-progress-container" class="mt-8 max-w-2xl mx-auto">
+                <p class="text-sm font-semibold text-stone-600 mb-2">Overall Journey Progress</p>
+                <div class="w-full bg-stone-200 rounded-full h-2.5">
+                    <div id="journey-progress-bar" class="bg-teal-600 h-2.5 rounded-full progress-bar-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <main id="main-content">
+            
+            <!-- Journey View: A graphical grid of dimension stages -->
+            <section id="journey-view" class="view active">
+                <h2 class="text-2xl font-semibold text-center mb-8 text-stone-700">Human+AI Symbiotic Inner Development Journey</h2>
+                <div id="journey-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Journey stage cards will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Dimension Detail View: Displaying skills for a selected dimension -->
+            <section id="dimension-detail-view" class="view">
+                <div class="mb-6">
+                    <button id="back-to-journey-from-dim-btn" onclick="showView('journey-view')" class="font-semibold flex items-center transition-opacity hover:opacity-80">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                        Back to Journey
+                    </button>
+                </div>
+                <div id="dimension-header" class="text-center mb-8">
+                    <!-- Dimension icon and title will be inserted here -->
+                </div>
+                <div id="skills-list" class="space-y-4">
+                    <!-- Skills will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Skill Detail View: The learning module for a specific skill -->
+            <section id="skill-detail-view" class="view">
+                 <div class="mb-6">
+                    <button id="back-to-skills-btn" class="font-semibold flex items-center transition-opacity hover:opacity-80">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                        Back to Skills
+                    </button>
+                </div>
+                <div id="skill-content" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                    <!-- Skill learning content will be inserted here -->
+                </div>
+            </section>
+            
+            <!-- Admin View: Settings for API Key and Coach Style -->
+            <section id="admin-view" class="view">
+                <div class="mb-6">
+                    <button onclick="showView('journey-view')" class="text-amber-800 hover:text-amber-900 font-semibold flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                        Back to Journey
+                    </button>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-bold text-stone-800 mb-6">Admin Settings</h2>
+                    <div id="settings-notification" class="hidden p-3 mb-4 rounded-lg text-sm"></div>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="api-key" class="block text-sm font-medium text-stone-700">Gemini API Key</label>
+                            <input type="password" id="api-key" class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm placeholder-stone-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm">
+                             <p class="mt-2 text-xs text-stone-500">Your API key is stored only in your browser's local storage and is never sent anywhere except directly to Google's Gemini API.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-stone-700">AI Coach Style</label>
+                            <fieldset class="mt-2">
+                                <legend class="sr-only">Coaching style</legend>
+                                <div id="coach-style-options" class="space-y-2">
+                                    <!-- Radio buttons will be inserted here -->
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div>
+                            <button onclick="saveSettings()" class="w-full bg-amber-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-amber-900 transition-colors duration-300">
+                                Save Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // --- DATA & STATE: The core content and user progress for the IDG App ---
+        const idgData = {
+            dimensions: [
+                {
+                    id: 'being',
+                    title: 'Being',
+                    subtitle: 'Relationship to Self',
+                    color: 'bg-orange-200',
+                    textColor: 'text-orange-900',
+                    progressColor: 'bg-orange-500',
+                    icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 25C50 25 58.3333 16.6667 70.8333 16.6667C83.3333 16.6667 91.6667 29.1667 91.6667 41.6667C91.6667 62.5 50 83.3333 50 83.3333C50 83.3333 8.33334 62.5 8.33334 41.6667C8.33334 29.1667 16.6667 16.6667 29.1667 16.6667C41.6667 16.6667 50 25 50 25Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 54.1667C56.9036 54.1667 62.5 48.5702 62.5 41.6667C62.5 34.7631 56.9036 29.1667 50 29.1667C43.0964 29.1667 37.5 34.7631 37.5 41.6667C37.5 48.5702 43.0964 54.1667 50 54.1667Z" stroke="currentColor" stroke-width="5"/></svg>`,
+                    skills: [
+                        { id: 'inner-compass', title: 'Inner Compass', progress: 0, description: 'A deeply felt sense of responsibility and commitment to values that serve the good of the whole.', practice: 'Before starting a major task today, pause for 60 seconds. Ask yourself: "How does this task align with what I value most?" Write down one word.', reflection: 'When was the last time you felt truly aligned with your actions, and what were you doing?', coachPrompts: ['How could an AI partner help me track my alignment with my core values this week?', 'What kind of data could I show an AI to get an objective perspective on my Inner Compass?', 'Suggest a symbiotic practice where I use AI to notice when I deviate from my principles.'] },
+                        { id: 'integrity', title: 'Integrity and Authenticity', progress: 0, description: 'The commitment and ability to act with sincerity, honesty, and alignment between values and actions.', practice: 'In your next team meeting, notice if there’s a moment you feel hesitant to speak your mind. Reflect on what holds you back. If appropriate, share your thought constructively.', reflection: 'In what situations do you find it easiest or hardest to be your authentic self?', coachPrompts: ['How can an AI serve as a "digital mirror" to reflect my authenticity back to me?', 'Design an experiment with me where an AI helps me notice gaps between my values and actions.', 'If an AI analyzed my communications for a day, what would it say about my authenticity?'] },
+                        { id: 'openness', title: 'Openness and Learning Mindset', progress: 0, description: 'A fundamental curiosity and willingness to be vulnerable, embrace change, and see challenges as opportunities for growth.', practice: 'When you encounter a problem today, actively seek out a perspective from someone you don\'t usually work with. Listen without interrupting.', reflection: 'Think of a past "failure." What was the most valuable lesson you learned from it?', coachPrompts: ['How can I use an AI to find credible viewpoints that challenge my own?', 'What is a "safe-to-fail" experiment I could run with an AI to practice a learning mindset?', 'Ask an AI to reframe a recent failure of mine as a story of growth.'] },
+                        { id: 'self-awareness', title: 'Self-awareness', progress: 0, description: 'The ability to be in reflective contact with our own thoughts, feelings, and desires.', practice: 'Set a timer for three random times today. When it goes off, pause and label your current emotion (e.g., "anxious," "calm," "focused"). No judgment, just observation.', reflection: 'What physical sensations in your body often signal a particular emotion for you (e.g., tight shoulders for stress)?', coachPrompts: ['How can I use an AI journal to discover emotional patterns I might be missing?', 'If my biometric data were a song, what would an AI say it sounds like right now?', 'Suggest a way an AI can be my "spotter" for unhelpful thought patterns today.'] },
+                        { id: 'presence', title: 'Presence', progress: 0, description: 'The ability to be fully in the here and now, without judgment, in a state of open-ended awareness.', practice: 'During your lunch break, put away your phone. Pay full attention to the taste, texture, and smell of your food for just five minutes.', reflection: 'When during your day do you feel most present? When do you feel most distracted?', coachPrompts: ['How can I use my digital tools symbiotically to create moments of presence, rather than distraction?', 'Suggest a way an AI can help me transition from a high-focus task back to a state of presence.', 'Ask an AI to generate a "Turing test for presence." What would the questions be?'] },
+                    ]
+                },
+                {
+                    id: 'thinking',
+                    title: 'Thinking',
+                    subtitle: 'Cognitive Skills',
+                    color: 'bg-sky-200',
+                    textColor: 'text-sky-900',
+                    progressColor: 'bg-sky-500',
+                    icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M75 41.6667C75 50.3709 70.0829 58.114 62.5 62.5V75H37.5V62.5C29.9171 58.114 25 50.3709 25 41.6667C25 27.4246 36.1726 16.6667 50 16.6667C63.8274 16.6667 75 27.4246 75 41.6667Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 75V83.3333" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M37.5 83.3333H62.5" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 45.8333C52.3012 45.8333 54.1667 43.9678 54.1667 41.6667C54.1667 39.3654 52.3012 37.5 50 37.5C47.6988 37.5 45.8333 39.3654 45.8333 41.6667C45.8333 43.9678 47.6988 45.8333 50 45.8333Z" stroke="currentColor" stroke-width="5"/></svg>`,
+                    skills: [
+                        { id: 'critical-thinking', title: 'Critical Thinking', progress: 0, description: 'The ability to critically review the validity of views, evidence, and plans.', practice: 'The next time you read a news article or report, ask: "What is the primary assumption here? What evidence is missing?"', reflection: 'Recall a time you changed your mind about something important. What caused the shift?', coachPrompts: ["How can I use an AI as a 'red team' to find flaws in my reasoning?", "What's a small experiment I could run with an AI partner to test my assumptions?", "Ask an AI to argue for the opposite of what I believe on a topic, using strong evidence."] },
+                        { id: 'complexity-awareness', title: 'Complexity Awareness', progress: 0, description: 'Understanding and skill in working with complex and systemic conditions.', practice: 'Pick a problem at work. Instead of a simple cause-and-effect, try to map at least three interconnected factors that contribute to it.', reflection: 'What is a "simple" problem that turned out to be far more complex than you first thought?', coachPrompts: ["How can an AI help me visualize the hidden feedback loops in a problem I'm facing?", "Use an AI to map the second and third-order consequences of a decision I'm considering.", "Ask an AI to explain a complex system to me as if I were a five-year-old."] },
+                        { id: 'perspective-skills', title: 'Perspective Skills', progress: 0, description: 'The ability to actively seek, understand, and make use of insights from contrasting perspectives.', practice: 'In your next disagreement, genuinely try to argue the other person\'s point of view to yourself. What new insights emerge?', reflection: 'Whose perspective do you find it most challenging to understand, and why?', coachPrompts: ["Ask an AI to write a story about a current event from three radically different characters' points of view.", "How can I use an AI to find the most intelligent people who disagree with me, and understand their perspective?", "Use an AI to synthesize three different perspectives into a new, more integrated view."] },
+                        { id: 'sense-making', title: 'Sense-making', progress: 0, description: 'The skill of seeing patterns, structuring the unknown, and creating coherent narratives from complex information.', practice: 'At the end of your workday, take 5 minutes to connect the dots. Write down the three most important things that happened and how they relate to each other.', reflection: 'How do you typically organize information when you feel overwhelmed by it?', coachPrompts: ["Give an AI a stream of my recent thoughts or journal entries and ask it to find the underlying themes.", "How can an AI help me create a coherent narrative from a confusing set of information?", "Use an AI as a partner to find the 'story behind the story' in a news article."] },
+                        { id: 'long-term-orientation', title: 'Long-term Orientation', progress: 0, description: 'The ability to think beyond immediate pressures and sustain commitment to larger visions.', practice: 'When making a decision today, ask: "What would my future self in 5 years advise me to do right now?"', reflection: 'What is a long-term goal you are working towards, and what is one small step you can take today?', coachPrompts: ["How can I use an AI to simulate the future impact of my daily actions?", "Ask an AI to write a 'future news story' from 2050 about the success of a long-term project I care about.", "Use an AI as a commitment partner to keep me focused on my long-term vision."] },
+                    ]
+                },
+                {
+                    id: 'relating',
+                    title: 'Relating',
+                    subtitle: 'Caring for Others and the World',
+                    color: 'bg-teal-200',
+                    textColor: 'text-teal-900',
+                    progressColor: 'bg-teal-500',
+                    icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 62.5C62.5939 62.5 72.9167 52.1772 72.9167 39.5833C72.9167 27 62.5939 16.6667 50 16.6667C37.4061 16.6667 27.0833 27 27.0833 39.5833C27.0833 45.4167 29.8958 50.5208 34.375 54.1667" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 83.3333C25 72.2878 36.1929 62.5 50 62.5C57.4477 62.5 64.1283 66.2519 68.75 71.875" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M75 83.3333C75 74.5292 68.9749 67.2917 61.4583 64.5833" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+                    skills: [
+                        { id: 'appreciation', title: 'Appreciation', progress: 0, description: 'The ability to relate to others and the world with a basic sense of gratitude and recognition of value.', practice: 'At the end of the day, write down one thing a colleague did that you appreciated. If you feel comfortable, share it with them tomorrow.', reflection: 'What is something simple you often take for granted?', coachPrompts: ['How can an AI help me notice small things to be grateful for that I usually overlook?', 'Ask an AI to write a short poem about an ordinary object I appreciate.', 'Use an AI to find and share a story of appreciation from a culture different from my own.'] },
+                        { id: 'connectedness', title: 'Connectedness', progress: 0, description: 'A keen sense of being part of a larger whole, whether a community, humanity, or the global ecosystem.', practice: 'Look at an everyday object on your desk. Take a moment to think about the hundreds of people involved in its creation and journey to you.', reflection: 'When have you felt most connected to a group or a cause?', coachPrompts: ["Use an AI to trace the global supply chain of a simple object on my desk, highlighting the web of people involved.", "Ask an AI to create a visualization of my connection to the natural world based on my daily activities.", "How could an AI help a group of people feel a stronger sense of shared identity?"] },
+                        { id: 'humility', title: 'Humility', progress: 0, description: 'The capacity to act in accordance with the needs of a situation without being driven by ego.', practice: 'In your next conversation, focus on listening more than you speak. Ask questions to understand, not to respond.', reflection: 'When is it difficult for you to admit you don\'t know something?', coachPrompts: ["Ask an AI to explain something I think I know well, and identify three things I didn't know.", "How can I use an AI partner to practice listening without formulating a response?", "Use an AI to find examples of great leaders demonstrating humility."] },
+                        { id: 'empathy', title: 'Empathy and Compassion', progress: 0, description: 'The ability to understand and feel into the experience of others, coupled with the motivation to help.', practice: 'When a colleague seems stressed, instead of offering a solution, try saying: "It sounds like this is really challenging. How are you doing with it?"', reflection: 'Think about a time someone showed you empathy. What did they do or say that made a difference?', coachPrompts: ["How can I use an AI to practice responding with compassion in a simulated difficult conversation?", "Ask an AI to re-write a critical email I received from a more compassionate perspective.", "Use an AI to find stories that deepen my empathy for a group of people I don't understand."] },
+                    ]
+                },
+                {
+                    id: 'collaborating',
+                    title: 'Collaborating',
+                    subtitle: 'Social Skills',
+                    color: 'bg-pink-200',
+                    textColor: 'text-pink-900',
+                    progressColor: 'bg-pink-500',
+                    icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.3333 58.3333C40.9137 58.3333 46.9444 52.3026 46.9444 44.7222C46.9444 37.1418 40.9137 31.1111 33.3333 31.1111C25.7529 31.1111 19.7222 37.1418 19.7222 44.7222C19.7222 52.3026 25.7529 58.3333 33.3333 58.3333Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.6667 80.2778V76.1111C16.6667 66.2731 24.162 58.3333 33.3333 58.3333" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M66.6667 58.3333C74.2471 58.3333 80.2778 52.3026 80.2778 44.7222C80.2778 37.1418 74.2471 31.1111 66.6667 31.1111C59.0863 31.1111 53.0556 37.1418 53.0556 44.7222C53.0556 52.3026 59.0863 58.3333 66.6667 58.3333Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M83.3333 80.2778V76.1111C83.3333 66.2731 75.838 58.3333 66.6667 58.3333C61.4729 58.3333 56.8407 60.7712 53.8889 64.4444" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M33.3333 58.3333C38.5271 58.3333 43.1593 60.7712 46.1111 64.4444" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+                    skills: [
+                        { id: 'communication-skills', title: 'Communication Skills', progress: 0, description: 'The ability to listen deeply, foster genuine dialogue, and manage conflict constructively.', practice: 'In your next conversation, after the other person finishes speaking, pause for a count of three before you respond. Use that time to fully absorb what they said.', reflection: 'What communication habit do you have that you\'d like to improve?', coachPrompts: ['How can an AI analyze a transcript of a conversation and give me feedback on my listening skills?', 'Ask an AI to rephrase a difficult message I need to send in a way that fosters dialogue.', 'Use an AI to simulate a conversation where I practice staying calm and constructive under pressure.'] },
+                        { id: 'co-creation-skills', title: 'Co-creation Skills', progress: 0, description: 'Skills to build and facilitate collaborative relationships characterized by psychological safety.', practice: 'Start your next project meeting by asking: "What does a great outcome look like for each of us?" and build from the shared understanding.', reflection: 'Think of your best-ever collaboration. What made it so effective?', coachPrompts: ['How can my team use an AI as a neutral facilitator in a brainstorming session?', 'Ask an AI to suggest three ways to increase psychological safety in my next meeting.', 'Use an AI to synthesize ideas from my team into a novel, co-created proposal.'] },
+                        { id: 'inclusive-mindset', title: 'Inclusive Mindset', progress: 0, description: 'The willingness and competence to embrace diversity and include people with different backgrounds.', practice: 'During a team discussion, consciously look for the person who has spoken the least and invite their opinion: "Sarah, we haven\'t heard from you yet, what are your thoughts?"', reflection: 'Whose voices or perspectives might be missing from your team\'s decision-making process?', coachPrompts: ['How can an AI help me identify and challenge unconscious biases in my language?', 'Ask an AI to check a document I wrote for language that might not be inclusive.', 'Use an AI to find and learn about the communication styles of a culture I want to understand better.'] },
+                        { id: 'trust', title: 'Trust', progress: 0, description: 'The ability to both show trust and to create and maintain trusting relationships.', practice: 'Delegate a task to a colleague and give them full autonomy on the "how". Focus on the "what" (the outcome), not micromanaging the process.', reflection: 'What actions build your trust in others? What actions erode it?', coachPrompts: ["What small actions could I take this week, assisted by an AI reminder, to build trust with my team?", "Ask an AI to analyze the characteristics of high-trust teams and give me three practical tips.", "How can I use an AI to help me delegate more effectively and show trust in my colleagues?"] },
+                        { id: 'mobilization-skills', title: 'Mobilization Skills', progress: 0, description: 'The ability to inspire and engage others to work toward a shared purpose.', practice: 'Connect a colleague\'s daily task to the team\'s larger mission. For example, "The care you\'re putting into this report is crucial for our client\'s success."', reflection: 'Who is someone that inspires you to act, and what is it about them that is so motivating?', coachPrompts: ["How can I use an AI to craft a more compelling story about a vision I have?", "Ask an AI to analyze a successful social movement and identify key mobilization strategies.", "Use an AI to help me connect the daily tasks of my team to a larger, shared purpose."] },
+                    ]
+                },
+                {
+                    id: 'acting',
+                    title: 'Acting',
+                    subtitle: 'Driving Change',
+                    color: 'bg-yellow-200',
+                    textColor: 'text-yellow-900',
+                    progressColor: 'bg-yellow-500',
+                    icon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M41.6667 16.6667L62.5 50L41.6667 83.3333" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 83.3333H75" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+                    skills: [
+                        { id: 'courage', title: 'Courage', progress: 0, description: 'The ability to stand up for values, make decisions, and challenge existing structures when necessary.', practice: 'Identify one small, necessary but uncomfortable action you have been avoiding. Dedicate 15 minutes today to starting it.', reflection: 'When was a time you acted with courage, even if you were afraid? What was the outcome?', coachPrompts: ["How can an AI help me break down a courageous action into smaller, less intimidating steps?", "Ask an AI to tell me a story about someone who showed courage in a similar situation I'm facing.", "Use an AI to 'wargame' a difficult conversation to build my confidence."] },
+                        { id: 'creativity', title: 'Creativity', progress: 0, description: 'The ability to generate and develop original ideas, innovate, and disrupt conventional patterns.', practice: 'Take a routine task you do every day. Ask yourself: "What if I did this in a completely different way?" Brainstorm three absurd ideas.', reflection: 'Where do you get your best ideas?', coachPrompts: ["Use an AI to combine two unrelated concepts and generate a novel idea.", "How can I use an AI as a 'creative muse' to break out of my usual thinking patterns?", "Ask an AI to imagine the 'next evolution' of a product or service I work with."] },
+                        { id: 'optimism', title: 'Optimism', progress: 0, description: 'The capacity to sustain and communicate a sense of hope and confidence in the possibility of meaningful change.', practice: 'When faced with a setback today, consciously identify one opportunity or lesson within the challenge.', reflection: 'Who in your life is a source of optimism for you, and why?', coachPrompts: ["How can I use an AI to find stories of progress and hope related to a challenge I care about?", "Ask an AI to reframe a pessimistic thought I have into an optimistic, but realistic, one.", "Use an AI to help me craft a message of hope that is both inspiring and credible."] },
+                        { id: 'perseverance', title: 'Perseverance', progress: 0, description: 'The ability to sustain engagement and remain determined and patient, even when efforts take a long time to bear fruit.', practice: 'Acknowledge a long-term goal you\'re working on. Today, simply do the "next small thing" on that path, no matter how small.', reflection: 'What keeps you going when you feel like giving up on a difficult project?', coachPrompts: ["How can I use an AI as a 'patience coach' to help me stay with a long-term project?", "Ask an AI to create a visual representation of my progress to keep me motivated.", "Use an AI to find stories of people who showed incredible perseverance against the odds."] },
+                    ]
+                }
+            ]
+        };
+
+        const coachStyles = [
+            { id: 'supportive', name: 'Supportive', description: 'Warm, encouraging, and empathetic.' },
+            { id: 'socratic', name: 'Socratic', description: 'Asks probing questions to stimulate critical thinking.'},
+            { id: 'direct', name: 'Direct', description: 'Clear, concise, and action-oriented.'},
+            { id: 'mindful', name: 'Mindful', description: 'Calm, present, and focused on awareness.'}
+        ];
+
+        let appState = {
+            currentView: 'journey-view',
+            selectedDimensionId: null,
+            selectedSkillId: null,
+            settings: {
+                apiKey: '',
+                coachStyle: 'supportive'
+            }
+        };
+
+        // --- CORE FUNCTIONS ---
+
+        function showView(viewId) {
+            document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            appState.currentView = viewId;
+            window.scrollTo(0, 0);
+        }
+        
+        function renderAllViews() {
+            renderJourneyView();
+            updateOverallProgressBar();
+            renderAdminView();
+        }
+        
+        function renderAdminView() {
+            const apiKeyInput = document.getElementById('api-key');
+            apiKeyInput.value = appState.settings.apiKey;
+            
+            const optionsContainer = document.getElementById('coach-style-options');
+            optionsContainer.innerHTML = '';
+            coachStyles.forEach(style => {
+                const checked = style.id === appState.settings.coachStyle ? 'checked' : '';
+                optionsContainer.innerHTML += `
+                    <div class="flex items-center">
+                        <input id="style-${style.id}" name="coach-style" type="radio" value="${style.id}" ${checked} class="h-4 w-4 text-amber-600 border-stone-300 focus:ring-amber-500">
+                        <label for="style-${style.id}" class="ml-3 block text-sm font-medium text-stone-700">
+                           ${style.name} <span class="text-xs text-stone-500">- ${style.description}</span>
+                        </label>
+                    </div>
+                `;
+            });
+        }
+        
+        function saveSettings() {
+            const apiKeyInput = document.getElementById('api-key');
+            const selectedStyle = document.querySelector('input[name="coach-style"]:checked');
+            
+            appState.settings.apiKey = apiKeyInput.value.trim();
+            if (selectedStyle) {
+                appState.settings.coachStyle = selectedStyle.value;
+            }
+            
+            localStorage.setItem('symbioticSettings', JSON.stringify(appState.settings));
+            
+            const notification = document.getElementById('settings-notification');
+            notification.textContent = 'Settings saved successfully!';
+            notification.className = 'p-3 mb-4 rounded-lg text-sm bg-green-100 text-green-800';
+            notification.style.display = 'block';
+            setTimeout(() => { notification.style.display = 'none'; }, 3000);
+        }
+
+        function loadSettings() {
+            const savedSettings = localStorage.getItem('symbioticSettings');
+            if (savedSettings) {
+                appState.settings = JSON.parse(savedSettings);
+            }
+        }
+
+        function updateOverallProgressBar() {
+            const allSkills = idgData.dimensions.flatMap(d => d.skills);
+            const totalProgress = allSkills.reduce((sum, skill) => sum + skill.progress, 0);
+            const totalSkillsCount = allSkills.length;
+            const progressPercentage = totalSkillsCount > 0 ? (totalProgress / totalSkillsCount) * 100 : 0;
+            
+            const progressBar = document.getElementById('journey-progress-bar');
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+        
+        function renderJourneyView() {
+            const grid = document.getElementById('journey-grid');
+            grid.innerHTML = '';
+
+            idgData.dimensions.forEach((dim) => {
+                const totalSkillProgress = dim.skills.reduce((sum, skill) => sum + skill.progress, 0);
+                const totalSkillsCount = dim.skills.length;
+                const dimensionProgress = totalSkillsCount > 0 ? (totalSkillProgress / totalSkillsCount) * 100 : 0;
+
+                const card = document.createElement('div');
+                card.className = `journey-card ${dim.color} p-6 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transform transition-all duration-300 cursor-pointer flex flex-col text-center`;
+                card.onclick = () => showDimensionDetail(dim.id);
+                
+                card.innerHTML = `
+                    <div class="dimension-icon-large w-32 h-32 mb-4 ${dim.textColor} flex items-center justify-center mx-auto">
+                        ${dim.icon}
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold ${dim.textColor}">${dim.title}</h3>
+                    <p class="text-sm ${dim.textColor} opacity-80 mb-4">${dim.subtitle}</p>
+                    
+                    <div class="w-full text-left mt-auto">
+                         <div class="flex justify-between items-center text-xs font-semibold ${dim.textColor} opacity-90 mb-1">
+                            <span>Progress</span>
+                            <span>${dimensionProgress.toFixed(0)}%</span>
+                        </div>
+                        <div class="w-full bg-black bg-opacity-10 rounded-full h-2">
+                            <div class="${dim.progressColor} h-2 rounded-full progress-bar-fill" style="width: ${dimensionProgress}%"></div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            const placeholder = document.createElement('div');
+            placeholder.className = 'hidden lg:block';
+            grid.appendChild(placeholder);
+        }
+
+        function showDimensionDetail(dimensionId) {
+            appState.selectedDimensionId = dimensionId;
+            const dimension = idgData.dimensions.find(d => d.id === dimensionId);
+            
+            const backBtn = document.getElementById('back-to-journey-from-dim-btn');
+            backBtn.className = `font-semibold flex items-center transition-opacity hover:opacity-80 ${dimension.textColor}`;
+
+
+            const header = document.getElementById('dimension-header');
+            header.innerHTML = `
+                <div class="${dimension.color} p-8 rounded-2xl">
+                    <div class="dimension-icon-large w-24 h-24 mx-auto mb-4 ${dimension.textColor} flex items-center justify-center">
+                        ${dimension.icon}
+                    </div>
+                    <h2 class="text-3xl font-bold ${dimension.textColor}">${dimension.title}</h2>
+                    <p class="${dimension.textColor} opacity-80">${dimension.subtitle}</p>
+                </div>
+            `;
+            
+            const skillsList = document.getElementById('skills-list');
+            skillsList.innerHTML = '';
+            dimension.skills.forEach(skill => {
+                const skillItem = document.createElement('div');
+                skillItem.className = `p-5 rounded-xl shadow-sm flex justify-between items-center gap-4 transition-all duration-300 bg-white hover:shadow-md cursor-pointer`;
+                skillItem.style.backgroundColor = `rgba(220, 252, 231, ${skill.progress})`;
+                skillItem.onclick = () => showSkillDetail(dimensionId, skill.id);
+                
+                const progressIndicator = `
+                    <div class="text-right flex-shrink-0 w-20">
+                        <div class="font-semibold ${dimension.textColor}">${(skill.progress * 100).toFixed(0)}%</div>
+                        <div class="w-full bg-stone-200 rounded-full h-1.5 mt-1">
+                           <div class="${dimension.progressColor} h-1.5 rounded-full progress-bar-fill" style="width: ${skill.progress * 100}%"></div>
+                        </div>
+                    </div>
+                `;
+
+                skillItem.innerHTML = `
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-lg text-stone-800">${skill.title}</h4>
+                        <p class="text-stone-500 text-sm">${skill.description}</p>
+                    </div>
+                    ${progressIndicator}
+                `;
+                skillsList.appendChild(skillItem);
+            });
+
+            showView('dimension-detail-view');
+        }
+
+        function showSkillDetail(dimensionId, skillId) {
+            appState.selectedSkillId = skillId;
+            const dimension = idgData.dimensions.find(d => d.id === dimensionId);
+            const skill = dimension.skills.find(s => s.id === skillId);
+            
+            const backToSkillsBtn = document.getElementById('back-to-skills-btn');
+            backToSkillsBtn.onclick = () => showDimensionDetail(dimensionId);
+            backToSkillsBtn.className = `font-semibold flex items-center transition-opacity hover:opacity-80 ${dimension.textColor}`;
+
+            const content = document.getElementById('skill-content');
+            content.innerHTML = `
+                <div class="mb-6">
+                    <h3 class="text-3xl font-bold ${dimension.textColor}">${skill.title}</h3>
+                    <div class="w-24 h-1.5 ${dimension.progressColor} rounded-full mt-2"></div>
+                </div>
+                <p class="text-stone-600 mb-6">${skill.description}</p>
+                
+                <div class="space-y-6">
+                    <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                        <h5 class="font-bold text-stone-700 mb-2">🌱 Micro-Practice</h5>
+                        <p class="text-stone-600">${skill.practice}</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                        <h5 class="font-bold text-stone-700 mb-2">🤔 Reflective Question</h5>
+                        <p class="text-stone-600">${skill.reflection}</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                        <h5 class="font-bold text-stone-700 mb-3">🤖 AI Coach</h5>
+                        <div id="ai-coach-chat" class="space-y-3 max-h-48 overflow-y-auto p-2">
+                             <div class="flex justify-start">
+                                <div class="bg-stone-200 text-stone-800 p-3 rounded-lg max-w-xs">
+                                    <p>Start a conversation with your AI partner. Try one of our suggestions or ask your own question.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-2">
+                           <input type="text" id="coach-input" class="flex-grow w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm placeholder-stone-400 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm" placeholder="Ask your question...">
+                           <button id="shuffle-prompt-btn" class="p-2 rounded-md hover:bg-stone-200 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+                           </button>
+                           <button id="send-prompt-btn" class="text-white font-semibold py-2 px-4 rounded-lg transition-opacity hover:opacity-90 ${dimension.progressColor}">
+                                Send
+                           </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-stone-200 text-center">
+                    <button onclick="progressSkill('${dimensionId}', '${skillId}')" class="${dimension.progressColor} text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300 text-lg">
+                        Practice & Progress
+                    </button>
+                </div>
+            `;
+            
+            const coachInput = document.getElementById('coach-input');
+            const shuffleBtn = document.getElementById('shuffle-prompt-btn');
+            const sendBtn = document.getElementById('send-prompt-btn');
+
+            function setRandomPrompt() {
+                const randomIndex = Math.floor(Math.random() * skill.coachPrompts.length);
+                coachInput.value = skill.coachPrompts[randomIndex];
+            }
+
+            setRandomPrompt(); 
+            shuffleBtn.onclick = setRandomPrompt;
+            sendBtn.onclick = () => askAICoach(coachInput.value);
+            coachInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    askAICoach(coachInput.value);
+                }
+            });
+
+            showView('skill-detail-view');
+        }
+
+        function progressSkill(dimensionId, skillId) {
+            const dimension = idgData.dimensions.find(d => d.id === dimensionId);
+            const skill = dimension.skills.find(s => s.id === skillId);
+            if(skill) {
+                skill.progress = skill.progress + (1 - skill.progress) * 0.5;
+            }
+            renderAllViews();
+            showDimensionDetail(dimensionId);
+        }
+        
+        async function askAICoach(promptText) {
+            if (!promptText.trim()) return;
+            
+            if (!appState.settings.apiKey) {
+                alert('Please set your Gemini API key in the Admin settings first.');
+                return;
+            }
+
+            const dimension = idgData.dimensions.find(d => d.id === appState.selectedDimensionId);
+            const skill = dimension.skills.find(s => s.id === appState.selectedSkillId);
+            const chat = document.getElementById('ai-coach-chat');
+            document.getElementById('coach-input').value = '';
+            
+            const userBubble = document.createElement('div');
+            userBubble.className = 'flex justify-end';
+            userBubble.innerHTML = `<div class="${dimension.progressColor} text-white p-3 rounded-lg max-w-xs"><p>${promptText}</p></div>`;
+            chat.appendChild(userBubble);
+            chat.scrollTop = chat.scrollHeight;
+
+            const loadingBubble = document.createElement('div');
+            loadingBubble.className = 'flex justify-start';
+            loadingBubble.innerHTML = `
+                <div class="bg-stone-200 text-stone-800 p-3 rounded-lg max-w-xs flex items-center space-x-2">
+                    <div class="loader"></div>
+                    <p>Thinking...</p>
+                </div>`;
+            chat.appendChild(loadingBubble);
+            chat.scrollTop = chat.scrollHeight;
+
+            const styleInfo = coachStyles.find(s => s.id === appState.settings.coachStyle);
+            const systemPrompt = `You are a Human+AI symbiotic partner, an insightful AI coach specializing in the Inner Development Goals. Your current coaching style is ${styleInfo.name}: ${styleInfo.description}. The user is working on the skill of '${skill.title}', which is described as '${skill.description}'. This skill is part of the '${dimension.title}' dimension. The user has asked the following: "${promptText}". Please provide a supportive, reflective, and concise response (around 2-4 sentences) that helps the user explore this question further. Frame your response as a collaborative partner. Avoid giving direct answers. Instead, ask insightful follow-up questions or offer a new perspective to deepen their reflection.`;
+
+            const chatHistory = [{ role: "user", parts: [{ text: systemPrompt }] }];
+            const payload = { contents: chatHistory };
+            const apiKey = appState.settings.apiKey;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error.message || `API Error: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                let aiText = "Sorry, I couldn't generate a response. Please try again.";
+                if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0]) {
+                    aiText = result.candidates[0].content.parts[0].text;
+                }
+                
+                loadingBubble.innerHTML = `<div class="bg-stone-200 text-stone-800 p-3 rounded-lg max-w-xs"><p>${aiText}</p></div>`;
+
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                loadingBubble.innerHTML = `<div class="bg-red-100 text-red-800 p-3 rounded-lg max-w-xs"><p>Error: ${error.message}. Please check your API key or network connection.</p></div>`;
+            } finally {
+                chat.scrollTop = chat.scrollHeight;
+            }
+        }
+
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSettings();
+            renderAllViews();
+        });
+
+    </script>
+</body>
+</html>
